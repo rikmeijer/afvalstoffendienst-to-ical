@@ -10,4 +10,9 @@ Zet de afvalkalendar op afvalstoffendienst.nl om in iCal formaat
 Use docker file to run as a docker service
 
 ## Demo
-https://afvalstoffendienst-to-ical.rikmeijer.nl
+https://afvalstoffendienst-to-ical.rikmeijer.nl?postcode=<POSTCODE>&huisnummer=<HUISNUMMER>
+
+of
+
+
+https://afvalstoffendienst-to-ical.rikmeijer.nl?postcode=<POSTCODE>&huisnummer=<HUISNUMMER>&toevoeging=<TOEVOEGING>
