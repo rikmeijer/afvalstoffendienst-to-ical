@@ -8,4 +8,4 @@ $huisnummer = escapeshellarg($_GET['huisnummer']);
 $toevoeging = escapeshellarg($_GET['toevoeging'] ?? '');
 
 header('content-type: text/calendar');
-`/usr/bin/php afvalstoffendienst2ical.php {$postcode} {$huisnummer} {$toevoeging}`;
+print shell_exec("/usr/bin/php afvalstoffendienst2ical.php {$postcode} {$huisnummer} {$toevoeging}");
