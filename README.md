@@ -8,3 +8,6 @@ Zet de afvalkalendar op afvalstoffendienst.nl om in iCal formaat
 ```
 
 Use docker file to run as a docker service
+
+## Demo
+https://afvalstoffendienst-to-ical.rikmeijer.nl
