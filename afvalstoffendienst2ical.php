@@ -8,6 +8,7 @@ use OpenCal\iCal\Domain\Entity\Calendar;
 use OpenCal\iCal\Domain\ValueObject\SingleDay;
 use OpenCal\iCal\Domain\ValueObject\Date;
 use OpenCal\iCal\Presentation\Factory\CalendarFactory;
+use OpenCal\iCal\Domain\ValueObject\Alarm;
 
 $url = "http://www.afvalstoffendienst.nl/afvalkalender";
 $months = [
@@ -85,12 +86,20 @@ foreach ($nodes as $node) {
         continue;
     }
     
+    $date = new DateTimeImmutable(date('Y') . '-' . array_search($date_parsed['maand'], $months) . '-' . $date_parsed['dayofmonth']);
+    $trigger_date = $date->sub(new DateInterval('P1D'))->setTime(15, 0);
+    
+    $action = new Alarm\DisplayAction('Vergeet "' . $node->childNodes->item(3)->textContent. '" niet aan de straat te zetten voor 7:00');
+    $trigger = new Alarm\AbsoluteDateTimeTrigger(new \OpenCal\iCal\Domain\ValueObject\Timestamp($trigger_date));
+    $alarm = new Alarm($action, $trigger);
+    
     $calendar->addEvent((new Event())
         ->setSummary($node->childNodes->item(3)->textContent)
+            ->addAlarm($alarm)
         ->setOccurrence(
             new SingleDay(
                 new Date(
-                    new DateTimeImmutable(date('Y') . '-' . array_search($date_parsed['maand'], $months) . '-' . $date_parsed['dayofmonth'])
+                    $date
                 )
             )
         ));
