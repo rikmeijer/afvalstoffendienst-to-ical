@@ -81,6 +81,7 @@ $classes = array_reduce($afvaltypes, function(array $carry, string $item) {
 $nodes = $ophaaldag_finder->query("//*[".join(' or ', $classes)."]");
 
 $calendar = new Calendar();
+$calendar->setCalendarName("Afvalstoffendienst");
 foreach ($nodes as $node) {
     if (preg_match('/(?<weekdag>\w+)\s+(?<dayofmonth>\d{2})\s+(?<maand>\w+)/', $node->childNodes->item(0)->textContent, $date_parsed) !== 1) {
         continue;
@@ -92,6 +93,7 @@ foreach ($nodes as $node) {
     $action = new Alarm\DisplayAction('Vergeet "' . $node->childNodes->item(3)->textContent. '" niet aan de straat te zetten voor 7:00');
     $trigger = new Alarm\AbsoluteDateTimeTrigger(new \OpenCal\iCal\Domain\ValueObject\Timestamp($trigger_date));
     $alarm = new Alarm($action, $trigger);
+    
     
     $calendar->addEvent((new Event())
         ->setSummary($node->childNodes->item(3)->textContent)
