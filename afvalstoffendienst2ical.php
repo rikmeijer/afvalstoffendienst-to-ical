@@ -29,7 +29,8 @@ $afvaltypes = [
     'restafval',
     'papier',
     'pd',
-    'kerstbomen'
+    'kerstbomen',
+    'gft'
 ];
 
 $_SERVER['argc'] > 2 || exit('gebruik: ' . basename(__FILE__) . ' <POSTCODE> <HUISNUMMER> [TOEVOEGING]' . PHP_EOL);
