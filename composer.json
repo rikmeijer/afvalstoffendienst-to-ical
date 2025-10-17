@@ -1,0 +1,9 @@
+{
+    "name": "rikmeijer/afvalstoffendienst-to-ical",
+    "description": "Zet de afvalkalendar op afvalstoffendienst.nl om in iCal formaat",
+    "type": "project",
+    "require": {
+        "php": "^8.4",
+        "opencal/ical": "^3.2"
+    }
+}
