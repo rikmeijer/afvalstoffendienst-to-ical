@@ -3,7 +3,7 @@ name: Generate & Push docker rikmeijer/afvalstoffendienst-to-ical images, which 
 on: ['push', 'pull_request']
 
 env:
-  REGISTRY_IMAGE: rikmeijer/afvalstoffendienst-to-ical
+  REGISTRY_IMAGE: rikmeijer84/afvalstoffendienst-to-ical
 
 jobs:
   build:
